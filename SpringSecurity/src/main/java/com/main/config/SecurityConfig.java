@@ -12,12 +12,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/public").permitAll() // anyone
+                        .requestMatchers("/admin").hasRole("ADMIN") // only admin
+                        .anyRequest().authenticated() // everything else -> login
                 )
-                .formLogin(Customizer.withDefaults())
-                .logout(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults()) // enable login form
+                .logout(Customizer.withDefaults());    // logout functionality
         return http.build();
     }
 
