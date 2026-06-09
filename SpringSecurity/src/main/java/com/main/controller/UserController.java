@@ -30,6 +30,12 @@ public class UserController {
 
     }
 
+    @GetMapping("/normaluser")
+    public String normalUserPage() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return "Hey " + auth.getName();
+    }
+
     // showing security context information - who i am!
     @GetMapping("/whoiam")
     public String whoIamPage() {

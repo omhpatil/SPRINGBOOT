@@ -20,6 +20,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/public").permitAll() // anyone
                         .requestMatchers("/admin").hasRole("admin") // only admin
+                        .requestMatchers("/normaluser").hasRole("user") // only normal user
                         .anyRequest().authenticated() // everything else -> login
                 )
                 .formLogin(Customizer.withDefaults()) // enable login form
