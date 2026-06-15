@@ -44,7 +44,8 @@ public class UserController {
 
         return "Principal: " + auth.getPrincipal() + "\n" +
                 "Authentication: " + auth.isAuthenticated() + "\n" +
-                "Authorities: " + auth.getAuthorities();
+                "Authorities: " + auth.getAuthorities() + "\n" +
+                "Credentials: " + auth.getCredentials();
     }
 
     // practice
